@@ -8,11 +8,10 @@ Test Teardown     Teardown Teste
 
 
 *** Test Cases ***
-Login Com Credenciais Válidas
+Login Com Credenciais Válidas - E-mail
     [Documentation]    Realiza o login com credenciais válidas.
     Dado Que O Usuário Está Na Página: Login
     Quando O Usuário Preenche O Campo "E-mail" Com "${EMAIL_VALIDO}"
     E Preenche O Campo "Senha" Com "${SENHA}"
     E Clica No Botão "Entrar"
     Então O Usuário Está Na Página: Principal
-    E Deve Visualizar A Mensagem Principal

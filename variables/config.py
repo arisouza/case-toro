@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 
-############  CREDENCIAIS
+############  AMBIENTE
 EMAIL_VALIDO = os.getenv("EMAIL")
 SENHA = os.getenv("SENHA")
 

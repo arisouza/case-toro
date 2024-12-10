@@ -8,7 +8,6 @@ from variables.config import (
     PATH_PLANILHA_RESULTADOS,
     RESULTADOS_SHEET_NAME,
     ATENCAO_OPERACIONAL_SHEET_NAME,
-    METRICAS_SHEET_NAME,
     LISTA_LINHAS_RESULTADOS,
     LISTA_LINHAS_AT_OP,
     LISTA_LINHAS_METRICAS,
@@ -65,9 +64,7 @@ class RelatorioProdutividade:
             LISTA_LINHAS_METRICAS.append(row)
 
         except Exception as e:
-            logger(
-                "Registrar métricas",
-                "ERROR",
+            logger.error(
                 f"Erro ao registrar métricas. Detalhes: {traceback.format_exc()}",
             )
             raise Exception(
@@ -97,9 +94,7 @@ class RelatorioProdutividade:
             self.planilha_obj = self.capturar_planilha_excel()
 
         except Exception as e:
-            logger(
-                "Atualizar planilha",
-                "ERROR",
+            logger.error(
                 f"Erro ao atualizar a aba '{sheet_name}'. Detalhes: {traceback.format_exc()}",
             )
             raise Exception(
@@ -119,9 +114,7 @@ class RelatorioProdutividade:
             else:
                 raise Exception("O arquivo Excel não contém abas válidas.")
         except Exception as e:
-            logger(
-                "Capturar planilha",
-                "ERROR",
+            logger.error(
                 f"Erro ao capturar planilha '{RELATORIO_TESTES}'. Detalhes: {traceback.format_exc()}",
             )
             raise Exception(
@@ -141,9 +134,7 @@ class RelatorioProdutividade:
             
             return self.planilha_obj.parse(sheet_name=sheet_name, dtype=str)
         except Exception as e:
-            logger(
-                "Capturar dados aba",
-                "ERROR",
+            logger.error(
                 f"Erro ao capturar dados da aba '{sheet_name}'. Detalhes: {traceback.format_exc()}",
             )
             raise Exception(
@@ -157,11 +148,8 @@ class RelatorioProdutividade:
         try:
             self.atualizar_planilha(LISTA_LINHAS_AT_OP, ATENCAO_OPERACIONAL_SHEET_NAME)
             self.atualizar_planilha(LISTA_LINHAS_RESULTADOS, RESULTADOS_SHEET_NAME)
-            self.atualizar_planilha(LISTA_LINHAS_METRICAS, METRICAS_SHEET_NAME)
         except Exception as e:
-            logger(
-                "Registrar dados todas as abas",
-                "ERROR",
+            logger.error(
                 f"Erro ao registrar dados em todas as abas. Detalhes: {traceback.format_exc()}",
             )
             raise Exception(

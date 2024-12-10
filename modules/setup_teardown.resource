@@ -21,7 +21,7 @@ Teardown Teste
     [Documentation]    Define o tempo de execução do teste e registra o resultado.
     ${horario_fim_teste}    Get Current Date
     Set Suite Variable    ${HORARIO_FIM_TESTE}
-    ${tempo_execucao}    Subtract Date From Date    ${HORARIO_INICIO_TESTE}    ${HORARIO_FIM_TESTE}
+    ${tempo_execucao}    Subtract Date From Date    ${HORARIO_FIM_TESTE}    ${HORARIO_INICIO_TESTE}
     ...    result_format=timer
     Set Suite Variable    ${TEMPO_EXECUCAO}
     IF    '${TEST_STATUS}' == 'FAIL'

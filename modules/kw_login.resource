@@ -25,4 +25,3 @@ Clica No Botão "Entrar"
 O Usuário Deve Ser Redirecionado Para A Página Principal
     [Documentation]    Valida se o usuário está na página principal.
     Wait Until Page Contains    ${H3}
-    
