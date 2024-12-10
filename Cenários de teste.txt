@@ -1,0 +1,74 @@
+Cenário 1: Login com credenciais válidas - E-mail
+    Dado que o usuário está na página de login
+    Quando o usuário preenche o campo "E-mail" com um e-mail válido
+    E preenche o campo "Senha" com a senha correta
+    E clica no botão "Entrar"
+    Então o usuário deve ser redirecionado para a página principal
+
+Cenário 2: Login com credenciais válidas - CPF
+    Dado que o usuário está na página de login
+    Quando o usuário preenche o campo "CPF" com um CPF válido
+    E preenche o campo "Senha" com a senha correta
+    E clica no botão "Entrar"
+    Então o usuário deve ser redirecionado para a página principal
+    E deve visualizar a mensagem "Bem-vindo(a), [Nome do usuário]"
+
+Cenário 3: Login com campo de e-mail/CPF vazio
+    Dado que o usuário está na página de login
+    Quando o usuário deixa o campo "E-mail" ou "CPF" vazio
+    E preenche o campo "Senha" com uma senha válida
+    E clica no botão "Entrar"
+    Então o sistema deve exibir a mensagem de erro "E-mail inválido"
+    E o login não deve ser realizado
+
+Cenário 4: Login com campo de senha vazio
+    Dado que o usuário está na página de login
+    Quando o usuário preenche o campo "E-mail" ou "CPF" com um valor válido
+    E deixa o campo "Senha" vazio
+    E clica no botão "Entrar"
+    Então o sistema deve exibir a mensagem de erro "Senha inválida"
+    E o login não deve ser realizado
+
+Cenário 5: Login com formato inválido no e-mail
+    Dado que o usuário está na página de login
+    Quando o usuário preenche o campo "E-mail" com "usuario@"
+    E preenche o campo "Senha" com uma senha válida
+    E clica no botão "Entrar"
+    Então o sistema deve exibir a mensagem de erro "E-mail inválido"
+    E o login não deve ser realizado
+
+Cenário 6: Login com CPF inválido
+    Dado que o usuário está na página de login
+    Quando o usuário preenche o campo "CPF" com um valor inválido (exemplo: "123456")
+    E preenche o campo "Senha" com uma senha válida
+    E clica no botão "Entrar"
+    Então o sistema deve exibir a mensagem de erro "CPF inválido"
+    E o login não deve ser realizado
+
+Cenário 7: Login com credenciais inválidas
+    Dado que o usuário está na página de login
+    Quando o usuário preenche o campo "E-mail" ou "CPF" com um valor válido
+    E preenche o campo "Senha" com uma senha incorreta
+    E clica no botão "Entrar"
+    Então o sistema deve exibir a mensagem "Dados incorretos. Digite novamente."
+
+Cenário 8: Login com credenciais não cadastradas
+    Dado que o usuário está na página de login
+    Quando o usuário preenche o campo "E-mail" ou "CPF" com um valor não cadastrado
+    E preenche o campo "Senha" com uma senha qualquer
+    E clica no botão "Entrar"
+    Então o sistema deve exibir a mensagem "Dados incorretos. Digite novamente."
+
+Cenário 9: Tentativa de login com conta bloqueada
+    Dado que o usuário está na página de login
+    E o usuário possui uma conta bloqueada
+    Quando o usuário preenche o campo "E-mail" com o e-mail da conta bloqueada
+    E preenche o campo "Senha" com a senha correta
+    E clica no botão "Entrar"
+    Então o sistema deve exibir a mensagem "Sua conta está bloqueada. Entre em contato com o suporte."
+
+Cenário 10: Tentativa de login com vários erros consecutivos
+    Dado que o usuário está na página de login
+    Quando o usuário insere credenciais inválidas cinco vezes consecutivas
+    Então o sistema deve bloquear a conta do usuário temporariamente
+    E exibir a mensagem "Muitas tentativas falhas. Tente novamente em 30 minutos."
